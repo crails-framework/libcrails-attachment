@@ -1,0 +1,6 @@
+$out_root/
+{
+  include libcrails-attachment/
+}
+
+export $out_root/libcrails-attachment/$import.target

@@ -1,0 +1,6 @@
+: 1
+summary: libcrails-attachment project repository
+
+:
+role: prerequisite
+location: https://github.com/crails-framework/libcrails.git
