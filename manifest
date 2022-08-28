@@ -2,7 +2,7 @@
 name: libcrails-attachment
 version: 2.0.0
 summary: helper to handle file storage from crails applications
-license: BSD-C3
+license: BSD-3-Clause
 description-file: README.md
 url: https://github.com/crails-framework/libcrails-attachment.git
 email: michael@unetresgrossebite.com
