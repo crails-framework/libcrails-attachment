@@ -1,6 +1,5 @@
 #include "attachment.hpp"
 #include <crails/utils/string.hpp>
-#include <boost/filesystem.hpp>
 
 using namespace std;
 using namespace Crails;
@@ -35,7 +34,7 @@ void Attachment::use_uploaded_file(const Crails::Params::File* file)
     extension = find_extension_in_filename(file->name);
     mimetype = file->mimetype;
     generate_uid();
-    boost::filesystem::copy_file(file->temporary_path, get_filepath());
+    filesystem::copy_file(file->temporary_path, get_filepath());
   }
   else
     std::string::operator=("");
@@ -43,7 +42,7 @@ void Attachment::use_uploaded_file(const Crails::Params::File* file)
 
 void Attachment::cleanup_files()
 {
-  boost::filesystem::remove(get_filepath());
+  filesystem::remove(get_filepath());
 }
 
 void Attachment::generate_uid()
@@ -65,7 +64,7 @@ std::string Attachment::get_path() const
 
 std::string Attachment::get_filepath() const
 {
-  return boost::filesystem::initial_path().string() + "/public/" + get_default_store_path() + '/' + get_filename();
+  return filesystem::current_path().string() + '/' + get_default_store_path() + '/' + get_filename();
 }
 
 std::string Attachment::get_filename() const
