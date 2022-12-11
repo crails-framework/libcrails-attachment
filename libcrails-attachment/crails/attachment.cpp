@@ -1,5 +1,7 @@
 #include "attachment.hpp"
-#include <crails/utils/string.hpp>
+#include <crails/utils/random_string.hpp>
+#include <crails/utils/split.hpp>
+#include <filesystem>
 
 using namespace std;
 using namespace Crails;

@@ -1,6 +1,8 @@
 intf_libs = # Interface dependencies.
 impl_libs = # Implementation dependencies.
-import libs += libcrails%lib{crails}
+import intf_libs += libcrails%lib{crails}
+import intf_libs += libcrails-semantics%lib{crails-semantics}
+import intf_libs += libcrails-random%lib{crails-random}
 
 lib{crails-attachment}: {hxx ixx txx cxx}{**} $impl_libs $intf_libs
 
