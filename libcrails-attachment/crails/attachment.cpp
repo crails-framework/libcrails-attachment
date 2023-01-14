@@ -61,6 +61,12 @@ void Attachment::cleanup_files()
     filesystem::remove(path);
 }
 
+void Attachment::new_uid()
+{
+  name = "";
+  generate_uid();
+}
+
 void Attachment::generate_uid()
 {
   std::string       charset("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890");

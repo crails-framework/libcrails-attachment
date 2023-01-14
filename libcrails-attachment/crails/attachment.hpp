@@ -28,6 +28,7 @@ namespace Crails
   protected:
     std::string get_filepath() const;
     std::string get_filename() const;
+    void        new_uid();
     void        generate_uid();
     std::string name, extension, mimetype;
   };
