@@ -19,6 +19,7 @@ namespace Crails
     const std::string& get_mimetype() const { return mimetype; }
 
     void use_uploaded_file(const Crails::Params::File* file);
+    void use_name(const std::string&);
 
     virtual void cleanup_files();
 

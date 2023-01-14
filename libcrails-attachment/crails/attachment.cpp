@@ -122,3 +122,11 @@ std::string Attachment::get_filename() const
 {
   return name + '.' + extension;
 }
+
+void Attachment::use_name(const std::string& value)
+{
+  const auto old_path = get_filepath();
+
+  name = value;
+  filesystem::rename(old_path, get_filepath());
+}
