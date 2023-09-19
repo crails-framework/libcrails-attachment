@@ -57,7 +57,7 @@ void Attachment::cleanup_files()
 {
   auto path = get_filepath();
 
-  if (filesystem::exists(path))
+  if (filesystem::is_regular_file(path))
     filesystem::remove(path);
 }
 
