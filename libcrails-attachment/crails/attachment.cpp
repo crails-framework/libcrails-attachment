@@ -5,6 +5,7 @@
 #include <filesystem>
 #include <crails/logger.hpp>
 #include <crails/server.hpp>
+#include <crails/mimetype.hpp>
 
 using namespace std;
 using namespace Crails;
@@ -34,6 +35,21 @@ static string find_extension_in_filename(const string& value)
   if (parts.size() > 1)
     return *parts.rbegin();
   return ".blob";
+}
+
+void Attachment::use_filesystem(const std::string& filepath)
+{
+  if (filesystem::exists(filepath))
+  {
+    if (length() > 0)
+      cleanup_files();
+    extension = find_extension_in_filename(filepath);
+    mimetype = get_mimetype(filepath);
+    generate_uid();
+    logger << Logger::Info << "storing attachment at " << get_filepath() << Logger::endl;
+    filesystem::create_directories(get_store_path());
+    filesystem::copy_file(filepath, get_filepath());
+  }
 }
 
 void Attachment::use_uploaded_file(const Crails::Params::File* file)
