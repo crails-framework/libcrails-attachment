@@ -52,6 +52,22 @@ void Attachment::use_filesystem(const std::string& filepath)
   }
 }
 
+void Attachment::link_to(const std::string& filepath)
+{
+  if (length() > 0)
+  {
+    error_code status;
+
+    filesystem::create_symlink(filepath, get_filepath(), status);
+    if (status)
+    {
+      throw boost_ext::runtime_error(
+        "failed to create symlink: " + status.message()
+      );
+    }
+  }
+}
+
 void Attachment::use_uploaded_file(const Crails::Params::File* file)
 {
   if (file)
@@ -73,7 +89,7 @@ void Attachment::cleanup_files()
 {
   auto path = get_filepath();
 
-  if (filesystem::is_regular_file(path))
+  if (filesystem::is_regular_file(path) || filesystem::is_symlink(path))
     filesystem::remove(path);
 }
 
