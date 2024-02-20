@@ -21,7 +21,7 @@ namespace Crails
     void use_uploaded_file(const Crails::Params::File* file);
     void use_filesystem(const std::string&);
     void use_name(const std::string&);
-    void link_to(const std::string&);
+    void link_to(const Attachment&);
 
     virtual void cleanup_files();
 

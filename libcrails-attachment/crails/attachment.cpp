@@ -48,13 +48,14 @@ void Attachment::use_filesystem(const std::string& filepath)
   }
 }
 
-void Attachment::link_to(const std::string& filepath)
+void Attachment::link_to(const Attachment& other)
 {
   if (length() > 0)
   {
     error_code status;
 
-    filesystem::create_symlink(filepath, get_filepath(), status);
+    cleanup_files();
+    filesystem::create_symlink(other.get_filepath(), get_filepath(), status);
     if (status)
     {
       throw boost_ext::runtime_error(
