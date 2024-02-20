@@ -30,11 +30,7 @@ Attachment::Attachment(const string& uid) : std::string(uid)
 
 static string find_extension_in_filename(const string& value)
 {
-  list<string> parts = split(value, '.');
-
-  if (parts.size() > 1)
-    return *parts.rbegin();
-  return ".blob";
+  return filesystem::path(value).extension().string();
 }
 
 void Attachment::use_filesystem(const std::string& filepath)
