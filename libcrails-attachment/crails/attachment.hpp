@@ -27,9 +27,9 @@ namespace Crails
 
     virtual std::string get_store_path() const;
     virtual std::string get_url() const;
+    std::string get_filepath() const;
 
   protected:
-    std::string get_filepath() const;
     std::string get_filename() const;
     void        new_uid();
     void        generate_uid();
