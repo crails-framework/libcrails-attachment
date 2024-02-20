@@ -30,7 +30,7 @@ Attachment::Attachment(const string& uid) : std::string(uid)
 
 static string find_extension_in_filename(const string& value)
 {
-  return filesystem::path(value).extension().string();
+  return filesystem::path(value).extension().string().substr(1);
 }
 
 void Attachment::use_filesystem(const std::string& filepath)
