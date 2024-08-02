@@ -30,7 +30,9 @@ Attachment::Attachment(const string& uid) : std::string(uid)
 
 static string find_extension_in_filename(const string& value)
 {
-  return filesystem::path(value).extension().string().substr(1);
+  string extension = filesystem::path(value).extension().string();
+
+  return extension.length() ? extension.substr(1) : string("blob");
 }
 
 void Attachment::use_filesystem(const std::string& filepath)
