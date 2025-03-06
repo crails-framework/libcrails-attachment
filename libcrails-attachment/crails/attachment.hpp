@@ -8,11 +8,9 @@ namespace Crails
   class Attachment : public std::string
   {
   public:
-    Attachment()
-    {
-    }
-
+    Attachment() {}
     Attachment(const std::string& uid);
+    virtual ~Attachment() {}
 
     const std::string& get_name() const { return name; }
     const std::string& get_extension() const { return extension; }
